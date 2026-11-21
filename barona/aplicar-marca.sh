@@ -26,6 +26,13 @@ cambiar Cargo.toml -e "s|^LegalCopyright = .*|LegalCopyright = \"$COPY\"|" \
   -e "s|^ProductName = \"RustDesk\"|ProductName = \"Barona Remoto\"|" \
   -e "s|^FileDescription = .*|FileDescription = \"Barona Remoto - Escritorio remoto\"|"
 
+cambiar Cargo.toml -e "s|^ProductName = \"Barona Remoto\"|&\nCompanyName = \"$EMPRESA\"|"
+cambiar libs/portable/Cargo.toml -e "s|^LegalCopyright = .*|LegalCopyright = \"$COPY\"|" \
+  -e "s|^ProductName = \"RustDesk\"|ProductName = \"Barona Remoto\"\nCompanyName = \"$EMPRESA\"|" \
+  -e "s|^FileDescription = .*|FileDescription = \"Barona Remoto - Escritorio remoto\"|" \
+  -e "s|^OriginalFilename = .*|OriginalFilename = \"barona-remoto.exe\"|" \
+  -e "s|^description = \"RustDesk Remote Desktop\"|description = \"Barona Remoto\"|"
+
 R=flutter/windows/runner/Runner.rc
 cambiar "$R" -e "s|VALUE \"CompanyName\", \"[^\"]*\"|VALUE \"CompanyName\", \"$EMPRESA\"|" \
   -e "s|VALUE \"FileDescription\", \"[^\"]*\"|VALUE \"FileDescription\", \"Barona Remoto - Escritorio remoto\"|" \
