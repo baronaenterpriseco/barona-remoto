@@ -39,6 +39,9 @@ cambiar "$R" -e "s|VALUE \"CompanyName\", \"[^\"]*\"|VALUE \"CompanyName\", \"$E
   -e "s|VALUE \"LegalCopyright\", \"[^\"]*\"|VALUE \"LegalCopyright\", \"$COPY\"|" \
   -e "s|VALUE \"ProductName\", \"[^\"]*\"|VALUE \"ProductName\", \"Barona Remoto\"|"
 
+cambiar flutter/lib/common.dart -e "s|launchUrl(Uri.parse('https://rustdesk.com'));|launchUrl(Uri.parse('https://baronaenterprise.com'));|" \
+  -e "s|translate(\"powered_by_me\"),|'Powered by Barona Enterprise',|"
+
 for f in res/icon.ico res/tray-icon.ico flutter/windows/runner/resources/app_icon.ico; do cp "$B/icon.ico" "$f"; done
 cp "$B/icon-1024.png" res/icon.png
 cp "$B/icon-32.png" res/32x32.png
